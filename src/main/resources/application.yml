@@ -1,0 +1,44 @@
+#设置静态访问， 访问所有静态资源都得加res
+#spring:
+#  mvc:
+#    static-path-pattern: /res/**
+#
+##  指定静态文件目录
+#  resources:
+#    static-locations:classpath:/haha
+
+#端口
+server:
+  port: 80
+  servlet:
+    context-path: /api
+
+
+#连接数据库
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/st1024?serverTimezone=GMT%2B8
+      username: root
+      password: 123456
+  mail:
+    host: smtp.qq.com
+    username: 1791331360@qq.com
+    password: fqfmcccdcgylcgdi
+    default-encoding: UTF-8
+    from: 1791331360@qq.com
+
+mybatis-plus:
+  global-config:
+    db-config:
+#      table-prefix: tbl_
+#      table-prefix: t_
+      id-type: auto
+
+      #日志配置
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+
+
