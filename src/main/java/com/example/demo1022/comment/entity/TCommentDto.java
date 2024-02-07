@@ -1,29 +1,14 @@
 package com.example.demo1022.comment.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
-import java.io.Serializable;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author user
- * @since 2024-01-25
- */
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Data
-@EqualsAndHashCode(callSuper = false)
-public class TComment implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    @TableId(value = "c_id", type = IdType.AUTO)
+public class TCommentDto extends TComment{
     private Integer cId;
 
     @TableField("u_id")
@@ -45,6 +30,10 @@ public class TComment implements Serializable {
 
     //权限
     private Integer userCheck;
+
+
+
+
 
     //昵称
     @TableField("nickName")
@@ -77,7 +66,20 @@ public class TComment implements Serializable {
     private  Integer replyId;
 
 
+    //回复列表
+    private List<TCommentDto> replyList;
 
+    //回复谁
+    private  String replyName;
+
+public TCommentDto(){
+
+}
+
+    public TCommentDto(Integer cId, Integer uId) {
+        this.cId = cId;
+        this.uId = uId;
+    }
 
 
 }

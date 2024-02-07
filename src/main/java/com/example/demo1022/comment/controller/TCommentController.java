@@ -2,6 +2,7 @@ package com.example.demo1022.comment.controller;
 
 
 import com.example.demo1022.comment.entity.TComment;
+import com.example.demo1022.comment.entity.TCommentDto;
 import com.example.demo1022.comment.service.TCommentService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,9 +52,21 @@ public class TCommentController {
 
     }
 
+    //文章下回复
+    @PostMapping("/relevanceComment")
+    public  List<TComment> relevanceComment(Integer cId){
+        return commentService.relevanceComment(cId);
+    }
+
+    //回复下回复
+    @PostMapping("/replyComment")
+    public  List<TComment> replyComment(Integer cId,Integer replyId){
+        return commentService.replyComment(cId,replyId);
+    }
+
     //根据文章id获取评论
     @GetMapping("/aidComment/{aid}")
-    public List<TComment> aidComment(@PathVariable("aid") Integer aid){
+    public List<TCommentDto> aidComment(@PathVariable("aid") Integer aid){
 
 System.out.println(aid);
         return  commentService.aidComment(aid);

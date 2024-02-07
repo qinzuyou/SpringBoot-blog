@@ -50,6 +50,9 @@ public class TArticle implements Serializable {
     //点击数
     private Integer hits;
 
+    //标签
+    private String labelList;
+
     //收藏数
     private String collect;
 

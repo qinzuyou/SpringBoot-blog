@@ -42,7 +42,7 @@ public class GeneratorTest {
         //4.包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName(null);
-        pc.setParent("com.example.demo1022.comment");
+        pc.setParent("com.example.demo1022.label");
         pc.setController("controller");
         pc.setEntity("entity");
         //只是对mapper中的方法进行了一些重新的封装 所以一般不进行使用
@@ -52,7 +52,7 @@ public class GeneratorTest {
         //5.策略配置
         StrategyConfig sc = new StrategyConfig();
         //对那些表进行生成代码
-        sc.setInclude("t_comment");
+        sc.setInclude("t_label");
         //数据库表映射到实体的命名策略
         sc.setNaming(NamingStrategy.underline_to_camel);
         //生成实体时去掉表前缀

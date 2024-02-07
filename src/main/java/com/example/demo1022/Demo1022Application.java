@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 @MapperScan("com.example.demo1022.article.mapper")
 @MapperScan("com.example.demo1022.articleType.mapper")
 @MapperScan("com.example.demo1022.comment.mapper")
+@MapperScan("com.example.demo1022.label.mapper")
 
 
 

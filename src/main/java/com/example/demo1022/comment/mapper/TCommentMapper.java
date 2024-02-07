@@ -2,6 +2,7 @@ package com.example.demo1022.comment.mapper;
 
 import com.example.demo1022.comment.entity.TComment;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.github.yulichang.base.MPJBaseMapper;
 
 /**
  * <p>
@@ -11,6 +12,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author user
  * @since 2024-01-25
  */
-public interface TCommentMapper extends BaseMapper<TComment> {
+public interface TCommentMapper extends MPJBaseMapper<TComment> {
 
 }

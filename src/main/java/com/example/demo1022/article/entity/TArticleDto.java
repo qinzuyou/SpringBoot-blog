@@ -35,6 +35,9 @@ public class TArticleDto {
     //用户昵称
     private String nickname;
 
+    //标签
+    private String labelList;
+
     //用户头像
     private String portrait;
 
