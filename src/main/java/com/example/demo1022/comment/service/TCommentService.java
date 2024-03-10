@@ -1,5 +1,6 @@
 package com.example.demo1022.comment.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.example.demo1022.comment.entity.TComment;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.demo1022.comment.entity.TCommentDto;
@@ -24,6 +25,13 @@ public interface TCommentService extends IService<TComment> {
 
     //回复下回复
     List<TComment> replyComment(Integer cId,Integer replyId);
+
+    //根据用户id返回评论数量
+    IPage<TCommentDto> commentCount(int pages,int size,Integer uid);
+
+
+    //根据文章id返回评论列表
+    IPage<TCommentDto> aidCommentCount(int pages,int size,Integer aid);
 
 
 

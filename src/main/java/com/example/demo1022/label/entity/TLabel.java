@@ -27,6 +27,8 @@ public class TLabel implements Serializable {
     @TableId(value = "l_id", type = IdType.AUTO)
     private Integer lId;
 
+    private Integer uId;
+
     private String name;
 
     @TableField(fill = FieldFill.INSERT)

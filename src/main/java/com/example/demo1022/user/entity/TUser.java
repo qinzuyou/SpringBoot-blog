@@ -26,8 +26,8 @@ public class TUser implements Serializable {
 
 //    private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
+    @TableId(value = "u_id", type = IdType.AUTO)
+    private Long uid;
 //    private String id;
 
     //用户账号
@@ -52,6 +52,18 @@ public class TUser implements Serializable {
 
     //收藏数
     private Integer collect;
+
+    //座右铭
+    private  String motto;
+
+    //网站名称
+    private String webName;
+
+    //性别
+    private  String gender;
+
+    //网站
+    private  String website;
 
     //入参时间格式化，如果入参不是pattern="yyyy-MM-dd HH:mm:ss" 定义的类型会报错
 //    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")

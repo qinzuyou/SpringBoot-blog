@@ -72,6 +72,12 @@ public class TCommentDto extends TComment{
     //回复谁
     private  String replyName;
 
+    //用户头像
+    private String portrait;
+
+    //网址
+    private  String website;
+
 public TCommentDto(){
 
 }

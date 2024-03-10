@@ -31,7 +31,9 @@ public class Handler implements MetaObjectHandler {
     public void updateFill(MetaObject metaObject) {
         Object val = getFieldValByName("updateTime", metaObject);
         if (val == null) {
-            this.setFieldValByName("updateTime", new Date(), metaObject);
+//            this.setFieldValByName("updateTime", new Date(), metaObject);
+           this.setFieldValByName("updateTime", LocalDateTime.now(), metaObject);
+
         }
     }
 

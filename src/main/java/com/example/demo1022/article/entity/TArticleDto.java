@@ -41,7 +41,27 @@ public class TArticleDto {
     //用户头像
     private String portrait;
 
+    private  String introduce;
+
     private LocalDateTime createTime;
 
     private LocalDateTime updateTime;
+
+    //评论数量
+    private int commentCount;
+
+    //数量
+    private int total;
+
+    //文章类型id
+    private  Integer tId;
+
+    //文章类型名称
+    private  String typeName;
+
+    //天数
+    private  int articleDay;
+
+    //推荐
+    private String recommend;
 }

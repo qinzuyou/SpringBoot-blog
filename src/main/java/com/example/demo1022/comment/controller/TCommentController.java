@@ -1,6 +1,7 @@
 package com.example.demo1022.comment.controller;
 
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.example.demo1022.comment.entity.TComment;
 import com.example.demo1022.comment.entity.TCommentDto;
 import com.example.demo1022.comment.service.TCommentService;
@@ -70,6 +71,18 @@ public class TCommentController {
 
 System.out.println(aid);
         return  commentService.aidComment(aid);
+    }
+
+    //根据用户id返回评论数量
+    @GetMapping("/commentCount")
+    public IPage<TCommentDto> commentCount(int pages,int size,Integer uid ){
+        return commentService.commentCount(pages,size,uid);
+    }
+
+    //根据用户id返回评论数量
+    @GetMapping("/aidCommentCount")
+    public IPage<TCommentDto> aidCommentCount(int pages,int size,Integer aid){
+        return commentService.aidCommentCount(pages,size,aid);
     }
 
 

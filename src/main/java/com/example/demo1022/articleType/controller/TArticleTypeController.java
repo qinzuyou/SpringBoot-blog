@@ -2,6 +2,7 @@ package com.example.demo1022.articleType.controller;
 
 
 import com.example.demo1022.articleType.entity.TArticleType;
+import com.example.demo1022.articleType.entity.TArticleTypeDto;
 import com.example.demo1022.articleType.service.TArticleTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,13 @@ public class TArticleTypeController {
 
     @Autowired
     private TArticleTypeService typeService;
+
+    //根据id返回所有分类
+
+    @GetMapping("/uidAllType")
+    public  List<TArticleTypeDto> uidAllType(Integer uid){
+     return    typeService.uidAllType(uid);
+    }
 
     @PostMapping("/addType")
     public boolean addType(TArticleType type){

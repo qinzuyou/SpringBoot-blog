@@ -6,7 +6,8 @@ import lombok.Data;
 
 public class TUserDto {
 
-    private Long id;
+    private Long uid;
+
 
 
     private String account;
@@ -31,6 +32,18 @@ public class TUserDto {
     //头像
     private String portrait;
 
+    //座右铭
+    private  String motto;
+
+    //网站
+    private  String website;
+
+    //网站名称
+    private String webName;
+
+    //性别
+    private  String gender;
+
     public TUserDto() {
 
     }
@@ -39,14 +52,15 @@ public class TUserDto {
         this.state = state;
     }
 
-    public TUserDto(Long id, String account, String nickname, Integer likes, Integer views,String portrait,Integer collect) {
-        this.id = id;
+    public TUserDto(Long uid, String account, String nickname, Integer likes, Integer views,String portrait,Integer collect,String motto) {
+        this.uid = uid;
         this.account = account;
         this.nickname = nickname;
         this.likes = likes;
         this.views = views;
         this.portrait=portrait;
         this.collect=collect;
+        this.motto=motto;
     }
 
     //    private Integer permissions;

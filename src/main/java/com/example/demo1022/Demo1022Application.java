@@ -10,6 +10,10 @@ import org.springframework.context.annotation.ComponentScan;
 @MapperScan("com.example.demo1022.articleType.mapper")
 @MapperScan("com.example.demo1022.comment.mapper")
 @MapperScan("com.example.demo1022.label.mapper")
+@MapperScan("com.example.demo1022.wallpaper.mapper")
+@MapperScan("com.example.demo1022.wallpaperType.mapper")
+@MapperScan("com.example.demo1022.poetry.mapper")
+
 
 
 

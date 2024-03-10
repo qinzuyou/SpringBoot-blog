@@ -22,6 +22,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 
+
+//Token验证
 @Slf4j
 @Component
 public class LoginInterceptor  implements HandlerInterceptor {

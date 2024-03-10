@@ -1,5 +1,7 @@
 package com.example.demo1022.user.utils;
 
+
+//未使用
 import io.jsonwebtoken.*;
 import org.springframework.util.StringUtils;
 
@@ -15,7 +17,7 @@ public class JWTUtils{
 
     //常量
 //    public static final long EXPIRE = 1000 * 60 * 60 * 24; //token过期时间, 这里设置的是一天的有效时间
-    public static final long EXPIRE = 1000 * 60;//60秒
+    public static final long EXPIRE = 1000 * 60 * 60 * 24;//60秒
     //秘钥，自己随便设,长度必须大于256
     public static final String APP_SECRET = "ukc8BDbRigUDaY6pZFfWus2jZWLPHO546465446546546546465";
 
@@ -34,7 +36,7 @@ public class JWTUtils{
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRE))
 
                 // 数据库中的字段
-                .claim("id", id)  //设置token主体部分 ，存储用户信息
+                .claim("u_id", id)  //设置token主体部分 ，存储用户信息
                 .claim("account", account)
 
                 // 签名哈希

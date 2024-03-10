@@ -56,6 +56,16 @@ public class TArticle implements Serializable {
     //收藏数
     private String collect;
 
+    //文章介绍
+
+    private  String introduce;
+
+    //推荐
+    private String recommend;
+
+    //文章类型id
+    private  Integer tId;
+
     @ApiModelProperty(value = "创建时间")
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;

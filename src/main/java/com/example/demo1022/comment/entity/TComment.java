@@ -76,6 +76,12 @@ public class TComment implements Serializable {
     //回复下回复
     private  Integer replyId;
 
+    //用户头像
+    private String portrait;
+
+    //网址
+    private  String website;
+
 
 
 

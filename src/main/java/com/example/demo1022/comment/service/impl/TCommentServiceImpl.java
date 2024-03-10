@@ -1,6 +1,8 @@
 package com.example.demo1022.comment.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo1022.article.entity.TArticle;
 import com.example.demo1022.comment.entity.TComment;
 import com.example.demo1022.comment.entity.TCommentDto;
@@ -28,6 +30,46 @@ public class TCommentServiceImpl extends ServiceImpl<TCommentMapper, TComment> i
 
 
     private final TCommentMapper commentMapper;
+
+    //根据用户id返回评论数量
+    @Override
+    public IPage<TCommentDto> commentCount(int pages,int size,Integer uid){
+
+        IPage<TCommentDto> list = commentMapper.selectJoinPage(
+                new Page<TCommentDto>(pages,size),
+                TCommentDto.class,
+                new MPJLambdaWrapper<TComment>()
+                        .selectAll(TComment.class)
+
+                        .leftJoin(TArticle.class,TArticle::getAId,TComment::getAId)
+
+                        .eq(TArticle::getUId,uid)
+                        .orderByDesc(TComment::getCId)
+        );
+
+        return list;
+
+    }
+
+    //根据文章id返回评论数量
+    @Override
+    public IPage<TCommentDto> aidCommentCount(int pages,int size,Integer aid){
+
+        IPage<TCommentDto> list = commentMapper.selectJoinPage(
+                new Page<TCommentDto>(pages,size),
+                TCommentDto.class,
+                new MPJLambdaWrapper<TComment>()
+                        .selectAll(TComment.class)
+                        .eq(TComment::getAId,aid)
+                        .orderByDesc(TComment::getCId)
+        );
+
+        return list;
+
+    }
+
+
+
     //根据文章id返回评论
     @Override
         public List<TCommentDto> aidComment(Integer aid){
@@ -46,6 +88,7 @@ public class TCommentServiceImpl extends ServiceImpl<TCommentMapper, TComment> i
                 TCommentDto.class,
                 new MPJLambdaWrapper<TComment>()
                         .selectAll(TComment.class)
+                        .eq(TComment::getAId,aid)
                         .orderByDesc(TComment::getCId)
 
 
