@@ -33,6 +33,12 @@ public class TCommentController {
     @Autowired
     private TCommentService commentService;
 
+    //根据用户id返回评论
+    @GetMapping("/uidComment")
+    public  List<TComment> uidComment(Integer uid){
+        return  commentService.uidComment(uid);
+    }
+
 
     //发表评论
     @PostMapping("/addComment")
@@ -47,8 +53,6 @@ public class TCommentController {
                 comment.setImgList("");
                 return commentService.save(comment);
             }
-
-
 
 
     }
@@ -73,7 +77,7 @@ System.out.println(aid);
         return  commentService.aidComment(aid);
     }
 
-    //根据用户id返回评论数量
+    //根据用户id返回评论数量和评论
     @GetMapping("/commentCount")
     public IPage<TCommentDto> commentCount(int pages,int size,Integer uid ){
         return commentService.commentCount(pages,size,uid);

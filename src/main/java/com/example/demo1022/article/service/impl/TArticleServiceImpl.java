@@ -49,14 +49,81 @@ public class TArticleServiceImpl extends ServiceImpl<TArticleMapper, TArticle> i
     private TCommentService commentService;
 
 
+    //返回热门文章
+
+    @Override
+    public IPage<TArticleDto> hotArticle(int pages, int size){
+
+
+
+        IPage<TArticleDto> list =tArticleMapper.selectJoinPage(
+                new Page<TArticleDto>(pages,size),
+                TArticleDto.class,
+                new MPJLambdaWrapper<TArticle>()
+                        .selectAll(TArticle.class)
+                        .selectAs(TUser::getAccount,TArticleDto::getAccount)
+                        .selectAs(TUser::getNickname,TArticleDto::getNickname)
+                        .selectAs(TUser::getPortrait,TArticleDto::getPortrait)
+                        .selectAs(TArticleType::getName,TArticleDto::getTypeName)
+                        .leftJoin(TUser.class,TUser::getUid,TArticle::getUId)
+                        .leftJoin(TArticleType.class,TArticleType::getTId,TArticle::getTId)
+
+                        .orderByDesc(TArticle::getHits)
+
+        );
+
+        List<TArticleDto> list2 =list.getRecords();
+
+        for(TArticleDto item:list2){
+            IPage<TCommentDto> commentDto =   commentService.aidCommentCount(1,1,item.getAId());
+
+            int shu = (int) commentDto.getTotal();
+            int shu2 = (int) list.getTotal();
+            item.setTotal(shu2);
+            item.setCommentCount(shu);
+        }
+
+        return list;
+
+    }
     //返回推荐文章
     @Override
-    public List<TArticle> Recommend(String re){
-        QueryWrapper queryWrapper = new QueryWrapper<>();
+    public IPage<TArticleDto> Recommend(int pages, int size,String re){
+//        QueryWrapper queryWrapper = new QueryWrapper<>();
+//
+//        queryWrapper.eq("recommend",re);
+//
+//        return  baseMapper.selectList(queryWrapper);
 
-        queryWrapper.eq("recommend",re);
 
-        return  baseMapper.selectList(queryWrapper);
+        IPage<TArticleDto> list =tArticleMapper.selectJoinPage(
+                new Page<TArticleDto>(pages,size),
+                TArticleDto.class,
+                new MPJLambdaWrapper<TArticle>()
+                        .selectAll(TArticle.class)
+                        .selectAs(TUser::getAccount,TArticleDto::getAccount)
+                        .selectAs(TUser::getNickname,TArticleDto::getNickname)
+                        .selectAs(TUser::getPortrait,TArticleDto::getPortrait)
+                        .selectAs(TArticleType::getName,TArticleDto::getTypeName)
+                        .leftJoin(TUser.class,TUser::getUid,TArticle::getUId)
+                        .leftJoin(TArticleType.class,TArticleType::getTId,TArticle::getTId)
+                        .eq(TArticle::getRecommend,re)
+                        .orderByDesc(TArticle::getAId)
+
+        );
+
+        List<TArticleDto> list2 =list.getRecords();
+
+        for(TArticleDto item:list2){
+            IPage<TCommentDto> commentDto =   commentService.aidCommentCount(1,1,item.getAId());
+
+            int shu = (int) commentDto.getTotal();
+            int shu2 = (int) list.getTotal();
+            item.setTotal(shu2);
+            item.setCommentCount(shu);
+        }
+
+        return list;
 
     }
 //    文章归档

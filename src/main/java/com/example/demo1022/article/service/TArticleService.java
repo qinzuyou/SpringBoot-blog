@@ -18,9 +18,13 @@ import java.util.List;
  */
 public interface TArticleService extends IService<TArticle> {
 
+    //返回热门文章
+    IPage<TArticleDto> hotArticle(int pages, int size);
+
+
     //返回推荐文章
 
-    List<TArticle> Recommend(String re);
+    IPage<TArticleDto> Recommend(int pages, int size,String re);
 
     //文章归档
     List<TArticleYear>   Stats(Integer uid);

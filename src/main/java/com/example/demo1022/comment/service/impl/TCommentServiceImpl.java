@@ -31,6 +31,13 @@ public class TCommentServiceImpl extends ServiceImpl<TCommentMapper, TComment> i
 
     private final TCommentMapper commentMapper;
 
+    @Override
+    public List<TComment> uidComment(Integer uid){
+        QueryWrapper queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("u_id",uid);
+        return  baseMapper.selectList(queryWrapper);
+    }
+
     //根据用户id返回评论数量
     @Override
     public IPage<TCommentDto> commentCount(int pages,int size,Integer uid){

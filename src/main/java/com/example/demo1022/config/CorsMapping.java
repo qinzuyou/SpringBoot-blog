@@ -22,8 +22,10 @@ public class CorsMapping implements WebMvcConfigurer {
         //addMapping 添加可跨域的请求地址
         registry.addMapping("/**")
                 //设置跨域 域名权限 规定由某一个指定的域名+端口能访问跨域项目
-//                .allowedOrigins("*")
-                .allowedOrigins("http://localhost:4000")
+                .allowedOrigins("/**")
+//                .allowedOrigins("http://localhost:4000")
+
+                .allowedOriginPatterns("*")// 设置允许跨域请求的域名
 
 
                 //是否开启cookie跨域
@@ -33,7 +35,7 @@ public class CorsMapping implements WebMvcConfigurer {
                 .allowedMethods("*")
 
                 //添加验证头信息  token
-//                .allowedHeaders()
+                .allowedHeaders("*")
 
                 //允许所有
                 .allowedHeaders("*")

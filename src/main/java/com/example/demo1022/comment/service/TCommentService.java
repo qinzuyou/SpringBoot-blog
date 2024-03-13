@@ -17,6 +17,9 @@ import java.util.List;
  */
 public interface TCommentService extends IService<TComment> {
 
+    //根据用户id返回评论
+    List<TComment> uidComment(Integer uid);
+
     //根据文章id返回评论
     List<TCommentDto> aidComment(Integer aid);
 

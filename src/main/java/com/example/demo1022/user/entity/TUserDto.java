@@ -2,6 +2,8 @@ package com.example.demo1022.user.entity;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 
 public class TUserDto {
@@ -43,6 +45,14 @@ public class TUserDto {
 
     //性别
     private  String gender;
+
+    //修改时间
+    private LocalDateTime updateTime;
+
+    //创建时间
+    private LocalDateTime createTime;
+
+
 
     public TUserDto() {
 

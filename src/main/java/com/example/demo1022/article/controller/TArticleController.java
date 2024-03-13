@@ -43,10 +43,17 @@ public class TArticleController {
     private TArticleService articleService;
 
     @PassToken
+    //返回热门文章
+    @GetMapping("/hotArticle")
+    public IPage<TArticleDto> hotArticle(int pages,int size){
+        return  articleService.hotArticle(pages, size);
+    }
+
+    @PassToken
     //返回推荐文章
     @GetMapping("/recommend")
-    public List<TArticle> recommend(String re){
-        return  articleService.Recommend(re);
+    public IPage<TArticleDto> recommend(String re,int pages,int size){
+        return  articleService.Recommend(pages, size, re);
     }
 
     //文章归档
